@@ -29,6 +29,7 @@
             <% } %>
 
             <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>Add Product<% } %></button>
+            <%- include('../includes/csrf.ejs') %> 
         </form>
     </main>
 <%- include('../includes/end.ejs') %>
