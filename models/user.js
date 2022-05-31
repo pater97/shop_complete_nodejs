@@ -11,6 +11,8 @@ const userSchema = new Schema({
   name: {
     type: String
   },
+  resetToken: String,
+  resetTokenExpiration: Date,
   email: {
     type: String,
     required: true
