@@ -1,6 +1,8 @@
 const User = require('../models/user');
 //importo il criptatore di password
 const bcrypt = require('bcryptjs');
+
+const {sendemail} = require('../helper/mailHelper');
 //mostro form di log in
 exports.getLogin = (req, res, next) => {
   res.render('auth/login', {
@@ -72,10 +74,15 @@ exports.postSignup = (req, res, next) => {
       const user = new User({
         email:email,
         password:hashedPassword,
+        name: 'test',
         cart : {items:[]}
         });
         //salvo il nuovo utente
       return user.save();
+    })
+    .then(user => {
+      console.log('mail inviata');
+      sendemail(user,'welcome','benvenuto',{name:user.name});
     })
     //se tutto è andato a buon fine reindirizzo l'utente loggato nella pagina login per usufruire effettivamente del nuovo account
     .then(result => {

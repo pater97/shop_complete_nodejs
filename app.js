@@ -1,5 +1,8 @@
+//importa variabili
+require('dotenv').config();
 //importo pack per i percorsi
 const path = require('path');
+
 //importo express
 const express = require('express');
 //importo pack per gestire il corpo delle richieste
@@ -14,6 +17,10 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const csfr = require('csurf');
 //importo il pacchetto per la gestione degli errori nel caso in cui ci fossero tramite la session
 const flash = require('connect-flash');
+
+
+
+
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 //imposto l'uri dato da mongodb
